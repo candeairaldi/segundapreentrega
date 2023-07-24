@@ -1,0 +1,402 @@
+    /* font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Roboto', sans-serif; */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.navIndex {
+    background-color: rgb(43, 43, 43);
+    padding: 10px;
+    font-family:  'Nanum Gothic', sans-serif;
+    font-size: 1rem;
+    color: black;
+}
+
+.header-style{
+    margin: 4rem;
+}
+
+.section-style{
+    margin: 2rem;
+}
+
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.0rem;
+    color: black;
+    text-align: center;
+    letter-spacing: 3px;
+    justify-content: center;
+    margin-bottom: 1rem;
+    
+}
+
+h2{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(41, 41, 41);
+    padding:20px;
+}
+h4{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+
+main h2:hover{
+    color:rgb(165, 99, 37);
+}
+
+.bodyImagen {
+    width: 100%;
+    height: 650px;
+    background-image: url(../assets/img/headerindex.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.bodyImagen3 {
+    width: 100%;
+    height: 700px;
+    background-image: url(../assets/img/headerindex.png);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat
+    }
+
+.bodyImagen1{
+    padding: 300px;
+    background-image: url(../assets/img/headerpag1.png);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.bodyImagen2 {
+    padding: 200px;
+    background-image: url(../assets/img/headerhombre.png);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+.search{
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: center;
+    list-style: none;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1rem;
+}
+
+.navBarList{
+    list-style: none;
+    display:flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 120px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 24;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+header nav ul li a:hover{
+    font-weight: bold;
+}
+
+
+.containerProductos {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 25rem;
+    margin-top: 1rem;
+}
+
+
+.sectionP1{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin:0,1rem;
+}
+
+.zapa1{
+    width: 20rem;
+    height:20rem;
+    border: solid white 0.2rem;
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+.zapa2{
+    width: 15rem;
+    height:10rem;
+    border: solid white 0.2rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.zapa3{
+    width: 15rem;
+    height:15rem;
+    border: solid white 0.2rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.fondoContacto{
+    padding: 8rem;
+    background-color: black;
+    background-image: url(../assets/img/headerindex.png);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+h3{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 3px;
+    justify-items: center;
+    margin-bottom: 1rem;
+    text-decoration:underline;
+}
+
+.form{
+    display:flex;
+    justify-content: center;
+}
+
+.cajasForm{
+    width: 25rem;
+    height: 2rem;
+    border: 1px solid grey ;
+    padding:6px;
+    display: block;
+}
+
+.sectionContact{
+    background-color: rgb(41, 41, 41);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.redesContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+.suscript{
+    padding: 3.5rem;
+    align-items: center;
+    background-color: grey;
+    margin-top: 1rem;
+}
+
+.formSuscript{
+    display: flex;
+    justify-content: center;
+} 
+
+.cajaSuscript{
+    width: 25rem;
+    height: 2rem;
+    border: 1px solid grey ;
+    padding:6px;
+    display: block;
+}
+
+.enviar-botton{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.wordNav{
+    color: black
+}
+
+li{
+    list-style: none;
+}
+
+.fuente-contact{
+    color: black;
+}
+
+.f-contact{
+    background-color: white;
+    padding: 2rem;
+}
+
+.container-fluid{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.form-floating{
+    margin:3rem;
+    border-radius:0;
+}
+
+.h1-fondo{   
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    background-color: rgb(41, 41, 41);
+    padding:20px;
+    opacity: 70%;
+}
+
+.footer {
+    background-color: rgb(41, 41, 41);
+    padding: 20px;
+    }
+    
+    .footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+    }
+    
+    .footer-item {
+    color: #535353;
+    }
+
+    .footer-item2 {
+    align-items: center;
+    }
+
+    .footer-item-redes{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    }
+    
+    .footer-item h3 {
+    margin-bottom: 10px;
+    }
+    
+    .footer-item ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    }
+    
+    .footer-item ul li {
+    margin-bottom: 5px;
+    }
+    
+    .footer-item ul li a {
+    color: #999;
+    text-decoration: none;
+    }
+
+    .footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    color: #999;
+    }       
+
+    .agregar-carrito {
+        background-color: #007BFF; /* Color azul */
+        color: #fff; /* Texto en color blanco */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .agregar-carrito:hover {
+        background-color: #0056b3; /* Color azul más oscuro en hover */
+    }
+    
+    @media (max-width: 1024px){
+        .bodyImagen{
+            height: 470px;
+        }
+        .bodyImagen1{
+            width: 870px;
+        }
+        h1{
+            margin-right: 8rem;
+        }
+        .navBarList{
+            margin-right: 8rem;
+        }
+        h2{
+            margin-right:8rem;
+        }
+        .containerProductos{
+            width: 100%;
+            height: 35rem;
+            margin-top: 1rem;
+        }
+    }
+
+    @media (max-width: 768px){
+        .bodyImagen{
+            height: 350px;
+        }
+        .icon{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+
+    @media (max-width:425px){
+        .bodyImagen{
+            height: 220px;
+        }
+    }
+
+    @media (max-width: 375){
+        .bodyImagen{
+            height: 180px;
+        }
+    
+    }
+
+    @media (max-width: 320){
+        .bodyImagen{
+            height: 180px;
+        }
+        .icon{
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+    }
