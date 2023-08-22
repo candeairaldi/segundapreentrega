@@ -1,0 +1,10 @@
+[
+    { "id":"emilia-zuela", "titulo": "Emilia Zuela", "imagen": "./assets/img/mujer5.jpg", "precio": 34800  },
+    { "id":"beryn-negro", "titulo": "Beryn Negro", "imagen": "./assets/img/mujer6.jpg", "precio": 34800  },
+    { "id":"zasha-blanco", "titulo": "Zasha Blanco", "imagen":"./assets/img/mujer7.jpg", "precio": 27600  },
+    { "id":"jana-suela", "titulo": "Jana Suela", "imagen":"./assets/img/mujer8.jpg", "precio": 35800  },
+    { "id":"camila-negro", "titulo": "Camila Negro", "imagen":"./assets/img/produc1.jpg", "precio": 33800  },
+    { "id":"juno-bronce", "titulo": "Juno Bronce", "imagen":"./assets/img/produc2.jpg", "precio": 34600  },
+    { "id":"renata-camel", "titulo": "Renata Camel", "imagen":"./assets/img/produc3.jpg", "precio": 38500  },
+    { "id":"caro-blanco", "titulo": "Caro Blanco", "imagen":"./assets/img/produc4.jpg", "precio": 38700 }
+]

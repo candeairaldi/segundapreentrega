@@ -1,52 +1,48 @@
-// objeto con la info de los productos
-const productos = [
-    { id:"emilia-zuela", titulo: "Emilia Zuela", imagen: "./assets/img/mujer5.jpg", precio: 34800,  },
-    { id:"beryn-negro", titulo: "Beryn Negro", imagen: "./assets/img/mujer6.jpg", precio: 34800,  },
-    { id:"zasha-blanco", titulo: "Zasha Blanco", imagen:"./assets/img/mujer7.jpg", precio: 27600,  },
-    { id:"jana-suela", titulo: "Jana Suela", imagen:"./assets/img/mujer8.jpg", precio: 35800,  },
-    { id:"camila-negro", titulo: "Camila Negro", imagen:"./assets/img/produc1.jpg", precio: 33800,  },
-    { id:"juno-bronce", titulo: "Juno Bronce", imagen:"./assets/img/produc2.jpg", precio: 34600,  },
-    { id:"renata-camel", titulo: "Renata Camel", imagen:"./assets/img/produc3.jpg", precio: 38500,  },
-    { id:"caro-blanco", titulo: "Caro Blanco", imagen:"./assets/img/produc4.jpg", precio: 38700,  },
-];
-
-//Todo lo que voy a llamar del DOM
-const contenedorProductos = document.querySelector("#contenedor-productos"); //Para llamar al ID
+// Todo lo que voy a llamar del DOM
+const contenedorProductos = document.querySelector("#contenedor-productos");
 let agregarProducto = document.querySelectorAll(".agregar-carrito");
 const numeroCarrito = document.querySelector("#numero-carrito");
 
-//forEach para recorrer los productos y mostrarlos en el DOM
-function cargarProductos () {
-  
+// Cargamos los productos usando fetch y un archivo JSON local
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        cargarProductos(data);
+    })
+    .catch(error => {
+        console.error("Error al cargar los productos:", error);
+    });
 
-    productos.forEach(producto => {
-
-      const div = document.createElement("div");
-      div.classList.add("producto");
-      div.innerHTML = `
-          <img class="zapa1" src="${producto.imagen}" alt="${producto.titulo}">
-          <div class="producto-detalles">
-            <h4 class="producto-titulo">${producto.titulo}</h4>
-            <h4 class="producto-precio">$${producto.precio}</h4>
-            <button class="agregar-carrito" id="${producto.id}">AGREGAR</button>
-        </div>
+function cargarProductos(productosData) {
+    productosData.forEach(producto => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+            <img class="zapa1" src="${producto.imagen}" alt="${producto.titulo}">
+            <div class="producto-detalles">
+                <h4 class="producto-titulo">${producto.titulo}</h4>
+                <h4 class="producto-precio">$${producto.precio}</h4>
+                <button class="agregar-carrito" id="${producto.id}">AGREGAR</button>
+            </div>
         `;
 
         contenedorProductos.append(div);
-})
-    actualizarAgregarProducto();
-  
-}
-cargarProductos(productos);
+    });
 
+    actualizarAgregarProducto();
+}
 
 function actualizarAgregarProducto() {
-      agregarProducto = document.querySelectorAll(".agregar-carrito");  //se trae del Dom
+    agregarProducto = document.querySelectorAll(".agregar-carrito");
 
-      agregarProducto.forEach(boton => {
-        boton.addEventListener("click", agregarAlCarrito); //EventListener que llama a la funcion agregarAlCarrito
-      });
+    agregarProducto.forEach(boton => {
+        boton.addEventListener("click", () =>{ 
+            console.log ("click");
+            agregarAlCarrito();
+        });
+    });
 }
+
 let productosCarrito;
 
 let productosCarritoLS = localStorage.getItem("productos-carrito");
@@ -59,7 +55,7 @@ if (productosCarritoLS){
 }
 
 function agregarAlCarrito(e) {
-
+    console.log("agregarAlCarrito");
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find(producto => producto.id === idBoton);
     
@@ -71,19 +67,24 @@ function agregarAlCarrito(e) {
         productosCarrito.push(productoAgregado);
     }
 
-      actualizarNumeroCarrito();
-      
-      localStorage.setItem("productos-carrito", JSON.stringify(productosCarrito));
-  }
-
-function actualizarNumeroCarrito() {
-  let nuevoNumero = productosCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-  numeroCarrito.innerText = nuevoNumero;
+    actualizarNumeroCarrito();
+    localStorage.setItem("productos-carrito", JSON.stringify(productosCarrito));
+    
+    
+    Toastify({
+        text: "Producto agregado",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #8B4513, #FFD700)",
+        }
+    }).showToast(); 
 }
 
-
-
-
-
-
-
+function actualizarNumeroCarrito() {
+    let nuevoNumero = productosCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numeroCarrito.innerText = nuevoNumero;
+}
