@@ -1,19 +1,12 @@
-// Todo lo que voy a llamar del DOM
-const contenedorProductos = document.querySelector("#contenedor-productos");
+//Todo lo que voy a llamar del DOM
+const contenedorProductos = document.querySelector("#contenedor-productos"); //Para llamar al ID
 let agregarProducto = document.querySelectorAll(".agregar-carrito");
 const numeroCarrito = document.querySelector("#numero-carrito");
-
-// Cargamos los productos usando fetch y un archivo JSON local
-fetch("./js/productos.json")
-    .then(response => response.json())
-    .then(data => {
-        cargarProductos(data);
-    })
-    .catch(error => {
-        console.error("Error al cargar los productos:", error);
-    });
+let productos;
 
 function cargarProductos(productosData) {
+    const agregarProducto = document.querySelectorAll(".agregar-carrito");
+
     productosData.forEach(producto => {
         const div = document.createElement("div");
         div.classList.add("producto");
@@ -33,21 +26,19 @@ function cargarProductos(productosData) {
 }
 
 function actualizarAgregarProducto() {
-    agregarProducto = document.querySelectorAll(".agregar-carrito");
-
+    const agregarProducto = document.querySelectorAll(".agregar-carrito");
+    
     agregarProducto.forEach(boton => {
-        boton.addEventListener("click", () =>{ 
-            console.log ("click");
-            agregarAlCarrito();
+        boton.addEventListener("click", (e) => {
+            console.log("click");
+            agregarAlCarrito(e);
         });
     });
 }
 
-let productosCarrito;
-
 let productosCarritoLS = localStorage.getItem("productos-carrito");
 
-if (productosCarritoLS){
+if (productosCarritoLS) {
     productosCarrito = JSON.parse(productosCarritoLS);
     actualizarNumeroCarrito();
 } else {
@@ -55,36 +46,47 @@ if (productosCarritoLS){
 }
 
 function agregarAlCarrito(e) {
-    console.log("agregarAlCarrito");
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find(producto => producto.id === idBoton);
-    
-    if(productosCarrito.some(producto => producto.id === idBoton)) {
-        const index = productosCarrito.findIndex(producto => producto.id === idBoton);
-        productosCarrito[index].cantidad++;
-    } else {
-        productoAgregado.cantidad = 1;
-        productosCarrito.push(productoAgregado);
-    }
 
-    actualizarNumeroCarrito();
-    localStorage.setItem("productos-carrito", JSON.stringify(productosCarrito));
-    
-    
-    Toastify({
-        text: "Producto agregado",
-        duration: 3000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        stopOnFocus: true,
-        style: {
-            background: "linear-gradient(to right, #8B4513, #FFD700)",
+    if (productoAgregado) {
+        const productoEnCarrito = productosCarrito.find(producto => producto.id === idBoton);
+
+        if (productoEnCarrito) {
+            productoEnCarrito.cantidad++;
+        } else {
+            productosCarrito.push({ ...productoAgregado, cantidad: 1 });
         }
-    }).showToast(); 
+
+        actualizarNumeroCarrito();
+        localStorage.setItem("productos-carrito", JSON.stringify(productosCarrito));
+
+        Toastify({
+            text: "Producto agregado",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "linear-gradient(to right, #8B4513, #FFD700)",
+            }
+        }).showToast();
+    }
 }
 
 function actualizarNumeroCarrito() {
     let nuevoNumero = productosCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numeroCarrito.innerText = nuevoNumero;
 }
+
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos(data);
+        console.log("Productos cargados:", productos); 
+    })
+    .catch(error => {
+        console.error("Error al cargar los productos:", error);
+    });
